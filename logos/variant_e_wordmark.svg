@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <text x="100" y="125" font-family="monospace" font-size="56" font-weight="bold" fill="#1e1b4b" text-anchor="middle" letter-spacing="-2">crux</text>
+  <rect x="40" y="140" width="120" height="4" rx="2" fill="#6366f1"/>
+  <circle cx="165" y="70" r="6" fill="#ec4899"/>
+</svg>
