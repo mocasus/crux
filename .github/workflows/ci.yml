@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-skills:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate SKILL.md frontmatter
+        run: |
+          for skill in skills/*/SKILL.md; do
+            echo "Validating $skill"
+            if ! head -1 "$skill" | grep -q '^---$'; then
+              echo "❌ $skill: missing frontmatter opening"
+              exit 1
+            fi
+            if ! grep -q '^name:' "$skill"; then
+              echo "❌ $skill: missing 'name' field"
+              exit 1
+            fi
+            if ! grep -q '^description:' "$skill"; then
+              echo "❌ $skill: missing 'description' field"
+              exit 1
+            fi
+            echo "  ✓ $skill valid"
+          done
+
+      - name: Validate Python scripts
+        run: |
+          for script in skills/*/scripts/*.py; do
+            echo "Checking $script"
+            python3 -m py_compile "$script" && echo "  ✓ $script compiles"
+          done
+
+      - name: Check file structure
+        run: |
+          echo "Checking required files..."
+          test -f README.md && echo "  ✓ README.md"
+          test -f LICENSE && echo "  ✓ LICENSE"
+          test -f skills/readme-author/SKILL.md && echo "  ✓ readme-author/SKILL.md"
+          test -f skills/logo-author/SKILL.md && echo "  ✓ logo-author/SKILL.md"
+          test -f skills/logo-author/scripts/svg_to_png.py && echo "  ✓ svg_to_png.py"
+          test -f skills/logo-author/scripts/showcase.py && echo "  ✓ showcase.py"
+          test -f skills/logo-author/references/design_patterns.md && echo "  ✓ design_patterns.md"
+          test -f skills/logo-author/references/background_styles.md && echo "  ✓ background_styles.md"
+          test -f skills/readme-author/templates/badges.md && echo "  ✓ badges.md"
+          test -f skills/readme-author/templates/hero_layout.md && echo "  ✓ hero_layout.md"
