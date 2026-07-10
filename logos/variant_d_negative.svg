@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
-    <mask id="cutout">
+    <mask id="crosscut">
       <rect width="200" height="200" fill="white"/>
-      <path d="M70,70 L130,130 M130,70 L70,130" stroke="black" stroke-width="14" stroke-linecap="round"/>
+      <rect x="85" y="40" width="30" height="120" rx="4" fill="black"/>
+      <rect x="40" y="85" width="120" height="30" rx="4" fill="black"/>
     </mask>
   </defs>
-  <polygon points="100,25 167,62 167,138 100,175 33,138 33,62" fill="#6366f1" mask="url(#cutout)"/>
-  <circle cx="100" cy="100" r="8" fill="#ec4899"/>
+  <polygon points="100,20 172,62 172,138 100,180 28,138 28,62" fill="#0f172a" mask="url(#crosscut)"/>
 </svg>

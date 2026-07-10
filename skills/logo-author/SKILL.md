@@ -81,43 +81,78 @@ Ask the user (or infer from project repo):
 
 ### Phase 2 — Generate Variants (6+)
 
-Generate **6+ distinct SVG logo variants**. Each variant explores a different design direction. Use `references/design_patterns.md` for SVG implementations.
+#### Step 1: MANDATORY — Load Design Patterns
 
-| # | Direction | Description | Best For |
-|---|-----------|-------------|----------|
-| A | **Geometric** — circles, hexagons, triangles | Abstract mark from pure shapes | Tech, data, AI/ML |
-| B | **Lettermark** — stylized first letter(s) | Monogram from initials | Short names, corporate |
-| C | **Symbolic** — represent the core concept | Icon that maps to function | Any product |
-| D | **Negative Space** — hidden meaning in gaps | Dual-meaning mark | Clever, memorable brands |
-| E | **Wordmark** — stylized text only | Custom typography | Established names |
-| F | **Bonus** — wildcard direction | Creative fusion of 2+ directions | Surprise factor |
+**You MUST load `references/design_patterns.md` via skill_view BEFORE writing any SVG.** This file contains copy-paste-ready SVG patterns with exact coordinates. Generating logos without loading it produces low-quality results — every time.
 
-**SVG Requirements:**
-
-```xml
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
-  <!-- Always use viewBox for scalability -->
-  <!-- Use currentColor for theme-adaptive logos -->
-  <!-- Keep under 5KB — complex paths bloat file size -->
-  <!-- Test on dark AND light backgrounds -->
-</svg>
+```
+skill_view(name='logo-author', file_path='references/design_patterns.md')
 ```
 
-**Color Palette Suggestions:**
+#### Step 2: SVG Construction Rules (NON-NEGOTIABLE)
 
-| Vibe | Primary | Accent | Dark | Light |
-|------|---------|--------|------|-------|
-| **Tech/Modern** | `#6366f1` (indigo) | `#ec4899` (pink) | `#1e1b4b` | `#f8fafc` |
-| **Trust/Finance** | `#059669` (emerald) | `#f59e0b` (amber) | `#064e3b` | `#f0fdf4` |
-| **Creative** | `#f97316` (orange) | `#8b5cf6` (violet) | `#1c1917` | `#fffbeb` |
-| **Minimal** | `#000000` | `#6b7280` | `#000000` | `#ffffff` |
-| **Bold** | `#dc2626` (red) | `#2563eb` (blue) | `#0f172a` | `#fef2f2` |
+These rules exist because they were violated repeatedly. Follow them exactly:
 
-**Design Pattern Categories** (see `references/design_patterns.md` for full SVG code):
-1. **Dot Matrix** — concentric rings, grid layout, capsule path, hexagon honeycomb
-2. **Geometric Shapes** — concentric circles, arc segments, boolean intersections, nested polygons
-3. **Line Systems** — horizontal fill (circle mask), wave/curve, spiral/fibonacci
-4. **Node Networks** — basic topology, asymmetric clusters
+| Rule | Correct | Wrong | Why It Matters |
+|------|---------|-------|----------------|
+| **viewBox** | `viewBox="0 0 100 100"` | `viewBox="0 0 200 200"` | Stroke widths (2.5-4px) are calibrated for 100x100. Doubling the viewBox halves effective stroke thickness → fragile logos |
+| **Color** | `fill="currentColor"` / `stroke="currentColor"` | `fill="#6366f1"` / hardcoded hex | `currentColor` = theme-adaptive (works on dark+light). Hardcoded = breaks on one theme |
+| **Accent color** | At most ONE accent: `fill="#3b82f6"` on a single element | Multiple accent colors, gradients | Restraint = confidence. Gradient = generic AI startup |
+| **Stroke width** | 3-5px for primary elements (in 100x100 viewBox) | 1.5-2px | Thin strokes look fragile and unprofessional |
+| **Element count** | 1-3 core shapes | 5+ shapes | Simplicity = memorability |
+| **Negative space** | 40-50% empty canvas | Elements filling most of canvas | Breathing room = sophistication |
+
+#### Step 3: Generate Using Design Pattern Categories
+
+Generate **6+ distinct SVG variants**. Use the pattern categories from `design_patterns.md` as your generation framework — NOT the abstract "directions" (geometric/lettermark/etc). The patterns have concrete SVG code you can adapt.
+
+| # | Pattern Category | Source in design_patterns.md | Best For |
+|---|-----------------|----------------------------|----------|
+| A | **Geometric Shape** — concentric rings, arc segments, nested polygons, boolean intersections | Part 1.2 | Tech, data, infrastructure |
+| B | **Dot Matrix** — circle dots (ring/grid), capsule dots (path-aligned), hexagon honeycomb | Part 1.1 | AI/ML, networks, data platforms |
+| C | **Line System** — horizontal fill (circle mask), wave/curve, spiral/fibonacci | Part 1.3 | Code tools, audio, analytics |
+| D | **Node Network** — topology with curved edges, asymmetric clusters | Part 1.4 | Agent frameworks, graphs, social |
+| E | **Combination** — dot+shape, dot+lines, geometry+lines, layered composition | Part 2 | Complex products needing richer marks |
+| F | **Letter/Symbol Integration** — geometric letter abstraction, dot matrix letter | Part 3 | Brand names, monograms |
+
+**For each variant:**
+1. Pick a pattern from design_patterns.md
+2. Adapt its SVG code to the product's concept (change shapes, counts, positions)
+3. Apply the construction rules above (viewBox 100, currentColor, stroke 3-5)
+4. Add at most ONE accent color element if the concept demands it
+5. Verify it passes the quality checklist (below)
+
+**Color Palette Suggestions (accent only — base is always `currentColor`):**
+
+| Vibe | Accent Color | Hex |
+|------|-------------|-----|
+| **Tech/Modern** | Indigo | `#6366f1` |
+| **Trust/Finance** | Emerald | `#059669` |
+| **Creative** | Orange | `#f97316` |
+| **Bold** | Red | `#dc2626` |
+| **Calm** | Teal | `#14b8a6` |
+| **Energy** | Amber | `#f59e0b` |
+
+**Iteration tracking:** Save numbered files: `logo_v1_a_geometric.svg`, `logo_v2_b_lettermark.svg`, etc.
+
+#### Step 4: Quality Gate (SELF-CHECK BEFORE PRESENTING)
+
+Before showing variants to the user, verify EACH variant against this checklist. If any fail, fix before presenting.
+
+```
+QUALITY GATE — check each variant:
+[ ] viewBox="0 0 100 100" (NOT 200)
+[ ] Uses currentColor for base (NOT hardcoded hex for main elements)
+[ ] At most ONE accent color (NOT multiple, NOT gradient)
+[ ] Primary stroke width ≥ 3px (NOT < 2.5)
+[ ] Element count ≤ 3 core shapes (NOT 5+)
+[ ] Negative space ≥ 40% (NOT packed tight)
+[ ] Works at 16x16 favicon (mentally render at tiny size — still recognizable?)
+[ ] Works on both dark AND light backgrounds (currentColor handles this)
+[ ] Total SVG size < 3KB (NOT bloated with complex paths)
+```
+
+If you cannot honestly check all boxes for a variant, regenerate it.
 5. **Combination Strategies** — dot+shape, dot+lines, line+shape fusion
 
 **Iteration tracking:** Save numbered files: `logo_v1_a_geometric.svg`, `logo_v2_b_lettermark.svg`, etc.
@@ -139,6 +174,14 @@ User picks 1-2 favorites. Offer targeted adjustments:
 3. User picks → or requests more changes → repeat
 
 **Favicon check:** Always verify the logo works at 16x16px. If it doesn't read at favicon size, simplify.
+
+**Presenting variants on messaging platforms (Telegram, Discord):** HTML showcases don't render in chat. Generate a PIL grid image (3×2 layout, 300px cells, white background, labeled) to send as a single photo. Example:
+```python
+from PIL import Image, ImageDraw, ImageFont
+# Grid: 3 cols × 2 rows, each cell 300px, paste 200px logo centered + label
+# Save as showcase_grid.png, send via MEDIA:path
+```
+This lets the user see all variants at once and pick by letter (A/B/C/D/E/F).
 
 ### Phase 4 — Export
 
@@ -198,13 +241,20 @@ User picks 1-2 favorites. Offer targeted adjustments:
 
 ## Pitfalls
 
-- **Don't use emoji as logos** — they render differently across platforms
-- **Don't use external fonts** — they won't render in SVG without embedding
-- **Always set viewBox** — never rely on width/height alone
-- **Keep SVG under 5KB** — complex paths bloat file size and slow rendering
-- **Test on dark AND light backgrounds** — use `currentColor` or provide variants
-- **Don't use raster images inside SVG** — defeats the purpose of vector
-- **Don't skip the favicon check** — if it doesn't read at 16x16, simplify
-- **Don't add gradients/shadows "because we can"** — restraint signals confidence
-- **Don't use strokeWidth < 2.5** — looks fragile and weak
+### Generation Pitfalls (Learned the Hard Way)
+
+- **DON'T skip loading design_patterns.md** — Generating SVG from scratch without the reference produces consistently worse results. The reference has copy-paste patterns with exact coordinates. Always load it first.
+- **DON'T use viewBox 200x200** — All stroke widths, dot sizes, and spacing in design_patterns.md are calibrated for viewBox 100x100. Using 200 halves everything → thin, fragile logos. Always use `viewBox="0 0 100 100"`.
+- **DON'T use gradients** — Gradients look generic ("AI startup template"). Use solid fills only. If you need depth, use opacity (0.3-0.6 for secondary elements), not gradients.
+- **DON'T hardcode multiple colors** — Use `currentColor` for base + at most ONE accent hex. Multiple hardcoded colors break theme-adaptivity and look busy.
+- **DON'T use stroke < 2.5px** — Looks fragile and weak. Use 3-5px for primary elements in 100x100 viewBox.
+- **DON'T use emoji as logos** — they render differently across platforms
+- **DON'T use external fonts** — they won't render in SVG without embedding
+- **DON'T set viewBox incorrectly** — always use `viewBox="0 0 100 100"`, never 200x200 or arbitrary sizes
+- **DON'T use raster images inside SVG** — defeats the purpose of vector
+- **DON'T skip the favicon check** — if it doesn't read at 16x16, simplify
+- **DON'T add shadows or filters "because we can"** — restraint signals confidence
+- **DON'T pack elements tightly** — minimum 8-12px spacing for breathing room
+- **DON'T present variants without passing the Quality Gate** — self-check EVERY variant before showing to user. Fix failures first.
 - **Don't pack elements tightly** — minimum 8-12px spacing for breathing room
+- **`svg_to_png.py` exports to CWD, not next to the SVG** — always run it from the directory where you want PNGs, or move them after. The script does NOT honor the SVG's parent directory.
