@@ -6,17 +6,42 @@
 
 **Generate professional README + Logo in one workflow — no external API needed**
 
+[![Version](https://img.shields.io/badge/version-1.0.0-blue?style=flat-square)](https://github.com/mocasus/crux/releases)
 [![License](https://img.shields.io/github/license/mocasus/crux?style=flat-square)](LICENSE)
 [![CI](https://img.shields.io/github/actions/workflow/status/mocasus/crux/ci.yml?style=flat-square&label=CI)](https://github.com/mocasus/crux/actions)
 [![Skills](https://img.shields.io/badge/skills-3-blue?style=flat-square)](#-skills)
-[![Sources](https://img.shields.io/badge/sources-3%20merged-success?style=flat-square)](#-sources--credits)
-[![No%20API](https://img.shields.io/badge/No%20API-key%20needed-success?style=flat-square)](#-why-crux)
+[![No API](https://img.shields.io/badge/No%20API-key%20needed-success?style=flat-square)](#-why-crux)
+[![Stars](https://img.shields.io/github/stars/mocasus/crux?style=flat-square&label=⭐)](https://github.com/mocasus/crux)
 
 </div>
 
 ---
 
-> Three skills, one goal: make any repo look professional in minutes. **readme-author** uses the Hook → Prove → Enable → Extend framework with scoring and validation. **logo-author** generates 6+ SVG variants, exports PNG in 7 sizes, and builds interactive HTML showcases with 12 background styles. **readme-full** chains both in a single pipeline — detect → logo → README → validate.
+> Ever spent an hour writing a README, only to realize it's missing a logo, has no badges, and looks bare? **Crux fixes that in one command.** Three skills that detect your project, generate 6+ logo variants, and build a scored README — all offline, no API keys.
+
+## 📋 Table of Contents
+
+- [Why Crux](#-why-crux)
+- [✨ Features](#-features)
+- [🚀 Quick Start](#-quick-start)
+- [📖 Usage](#-usage)
+- [📦 Skills](#-skills)
+- [🏗️ Architecture](#️-architecture)
+- [📊 Comparison](#-comparison)
+- [🎨 Logo Design Principles](#-logo-design-principles)
+- [🤝 Contributing](#-contributing)
+- [🗺️ Roadmap](#️-roadmap)
+- [📄 License](#-license)
+
+## 🔍 Why Crux
+
+Most README generators stop at templates. Crux goes further:
+
+- **Logo + README in one pipeline** — not just text, full visual identity
+- **6+ logo variants per request** — geometric, lettermark, symbolic, negative space, wordmark
+- **Scoring system** — know exactly what your README is missing (Essential → Viral, 100 pts)
+- **Zero external dependencies** — no API keys, no cloud calls, works offline
+- **Agent-native** — designed for Hermes Agent and Claude Code, not just humans
 
 ## ✨ Features
 
@@ -32,7 +57,7 @@
 **logo-author**
 - 6+ SVG variants per request across 5 design directions
 - 8 critical design principles with pre-finalization checklist
-- Design pattern library: dot matrix, geometric shapes, line systems, node networks, combinations
+- Design pattern library: dot matrix, geometric shapes, line systems, node networks
 - 12 showcase background styles (6 dark + 6 light)
 - 6 WebGL shader backgrounds (LED Matrix, Fluid Warping, Fabric Wave, etc.)
 - PNG export in 7 standard sizes (16px → 2048px) — 2 methods (Python + Shell)
@@ -188,6 +213,19 @@ crux/
         └── ci.yml                  # Validate SKILL.md + Python scripts
 ```
 
+## 📊 Comparison
+
+| Feature | Crux | Manual README | AI Generators | README Templates |
+|---------|------|---------------|---------------|------------------|
+| Logo generation | ✅ 6+ SVG variants | ❌ | ⚠️ Sometimes | ❌ |
+| README scoring | ✅ 100-pt system | ❌ | ❌ | ❌ |
+| Works offline | ✅ No API needed | ✅ | ❌ | ✅ |
+| Agent-native | ✅ Hermes + Claude | ❌ | ❌ | ❌ |
+| PNG export (7 sizes) | ✅ | ❌ | ⚠️ | ❌ |
+| HTML showcase | ✅ 12 backgrounds | ❌ | ❌ | ❌ |
+| Project type detection | ✅ Auto | ❌ | ⚠️ | ❌ |
+| Customizable framework | ✅ Hook→Prove→Enable→Extend | ❌ | ❌ | ⚠️ Static |
+
 ## 🎨 Logo Design Principles
 
 1. **Extreme Simplicity** — 1–2 core elements max
@@ -211,12 +249,20 @@ PRs welcome. Areas to contribute:
 
 ## 🗺️ Roadmap
 
-- [ ] `combo` meta-skill that chains readme-author + logo-author
 - [ ] Dark/light logo variants auto-generated from single source
 - [ ] Social card generator (1200×630px)
 - [ ] Favicon pack export (ICO + PNG + Apple touch icon)
 - [ ] Animated SVG logo variants
+- [ ] More project-type templates (Rust, Go, Docker)
 
 ## 📄 License
 
 [MIT](LICENSE) — free for personal and commercial use.
+
+---
+
+<div align="center">
+
+**v1.0.0** · Made with care for developers who ship fast.
+
+</div>
