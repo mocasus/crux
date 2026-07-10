@@ -1,47 +1,22 @@
 <div align="center">
 
-<img src="logo.png" width="180" alt="Crux">
+<img src="assets/logos/logo-dark.png" width="180" alt="Crux">
 
 # Crux
 
 **Generate professional README + Logo in one workflow — no external API needed**
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue?style=flat-square)](https://github.com/mocasus/crux/releases)
 [![License](https://img.shields.io/github/license/mocasus/crux?style=flat-square)](LICENSE)
 [![CI](https://img.shields.io/github/actions/workflow/status/mocasus/crux/ci.yml?style=flat-square&label=CI)](https://github.com/mocasus/crux/actions)
 [![Skills](https://img.shields.io/badge/skills-3-blue?style=flat-square)](#-skills)
-[![No API](https://img.shields.io/badge/No%20API-key%20needed-success?style=flat-square)](#-why-crux)
-[![Stars](https://img.shields.io/github/stars/mocasus/crux?style=flat-square&label=⭐)](https://github.com/mocasus/crux)
+[![Sources](https://img.shields.io/badge/sources-3%20merged-success?style=flat-square)](#-sources--credits)
+[![No%20API](https://img.shields.io/badge/No%20API-key%20needed-success?style=flat-square)](#-why-crux)
 
 </div>
 
 ---
 
-> Ever spent an hour writing a README, only to realize it's missing a logo, has no badges, and looks bare? **Crux fixes that in one command.** Three skills that detect your project, generate 6+ logo variants, and build a scored README — all offline, no API keys.
-
-## 📋 Table of Contents
-
-- [Why Crux](#-why-crux)
-- [✨ Features](#-features)
-- [🚀 Quick Start](#-quick-start)
-- [📖 Usage](#-usage)
-- [📦 Skills](#-skills)
-- [🏗️ Architecture](#️-architecture)
-- [📊 Comparison](#-comparison)
-- [🎨 Logo Design Principles](#-logo-design-principles)
-- [🤝 Contributing](#-contributing)
-- [🗺️ Roadmap](#️-roadmap)
-- [📄 License](#-license)
-
-## 🔍 Why Crux
-
-Most README generators stop at templates. Crux goes further:
-
-- **Logo + README in one pipeline** — not just text, full visual identity
-- **6+ logo variants per request** — geometric, lettermark, symbolic, negative space, wordmark
-- **Scoring system** — know exactly what your README is missing (Essential → Viral, 100 pts)
-- **Zero external dependencies** — no API keys, no cloud calls, works offline
-- **Agent-native** — designed for Hermes Agent and Claude Code, not just humans
+> Three skills, one goal: make any repo look professional in minutes. **readme-author** uses the Hook → Prove → Enable → Extend framework with scoring and validation. **logo-author** generates 6+ SVG variants, exports PNG in 7 sizes, and builds interactive HTML showcases with 12 background styles. **readme-full** chains both in a single pipeline — detect → logo → README → validate.
 
 ## ✨ Features
 
@@ -57,7 +32,7 @@ Most README generators stop at templates. Crux goes further:
 **logo-author**
 - 6+ SVG variants per request across 5 design directions
 - 8 critical design principles with pre-finalization checklist
-- Design pattern library: dot matrix, geometric shapes, line systems, node networks
+- Design pattern library: dot matrix, geometric shapes, line systems, node networks, combinations
 - 12 showcase background styles (6 dark + 6 light)
 - 6 WebGL shader backgrounds (LED Matrix, Fluid Warping, Fabric Wave, etc.)
 - PNG export in 7 standard sizes (16px → 2048px) — 2 methods (Python + Shell)
@@ -170,8 +145,13 @@ python skills/logo-author/scripts/generate_showcase.py "MyApp" logo_512.png --al
 
 ```
 crux/
-├── logo.svg                        # Crux's own logo (dogfooded)
-├── logo.png                        # 512×512 PNG for README
+├── assets/
+│   └── logos/                       # Final logo set (5 variants: dark, light, flat, mini, mono)
+│       ├── logo-dark.svg/.png       # Primary — dark bg, gradient X
+│       ├── logo-light.svg/.png      # Light bg variant
+│       ├── logo-flat.svg/.png       # No bg (for headers)
+│       ├── logo-mini.svg/.png       # 64×64 favicon
+│       └── logo-mono-white.svg/.png # Monochrome white
 ├── skills/
 │   ├── readme-author/
 │   │   ├── SKILL.md                # Hook → Prove → Enable → Extend + 4 operations
@@ -207,24 +187,11 @@ crux/
 │       └── assets/
 │           └── showcase_template.html  # React interactive showcase template
 │
-├── logos/                          # Variants + showcase from logo design
+├── logos/                          # Design history — earlier logo variants from iterative design
 └── .github/
     └── workflows/
         └── ci.yml                  # Validate SKILL.md + Python scripts
 ```
-
-## 📊 Comparison
-
-| Feature | Crux | Manual README | AI Generators | README Templates |
-|---------|------|---------------|---------------|------------------|
-| Logo generation | ✅ 6+ SVG variants | ❌ | ⚠️ Sometimes | ❌ |
-| README scoring | ✅ 100-pt system | ❌ | ❌ | ❌ |
-| Works offline | ✅ No API needed | ✅ | ❌ | ✅ |
-| Agent-native | ✅ Hermes + Claude | ❌ | ❌ | ❌ |
-| PNG export (7 sizes) | ✅ | ❌ | ⚠️ | ❌ |
-| HTML showcase | ✅ 12 backgrounds | ❌ | ❌ | ❌ |
-| Project type detection | ✅ Auto | ❌ | ⚠️ | ❌ |
-| Customizable framework | ✅ Hook→Prove→Enable→Extend | ❌ | ❌ | ⚠️ Static |
 
 ## 🎨 Logo Design Principles
 
@@ -249,20 +216,12 @@ PRs welcome. Areas to contribute:
 
 ## 🗺️ Roadmap
 
-- [ ] Dark/light logo variants auto-generated from single source
+- [ ] `combo` meta-skill that chains readme-author + logo-author
+- [x] Dark/light logo variants auto-generated from single source
 - [ ] Social card generator (1200×630px)
 - [ ] Favicon pack export (ICO + PNG + Apple touch icon)
 - [ ] Animated SVG logo variants
-- [ ] More project-type templates (Rust, Go, Docker)
 
 ## 📄 License
 
 [MIT](LICENSE) — free for personal and commercial use.
-
----
-
-<div align="center">
-
-**v1.0.0** · Made with care for developers who ship fast.
-
-</div>
