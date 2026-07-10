@@ -8,7 +8,7 @@
 
 [![License](https://img.shields.io/github/license/mocasus/crux?style=flat-square)](LICENSE)
 [![CI](https://img.shields.io/github/actions/workflow/status/mocasus/crux/ci.yml?style=flat-square&label=CI)](https://github.com/mocasus/crux/actions)
-[![Skills](https://img.shields.io/badge/skills-2-blue?style=flat-square)](#-skills)
+[![Skills](https://img.shields.io/badge/skills-3-blue?style=flat-square)](#-skills)
 [![Sources](https://img.shields.io/badge/sources-3%20merged-success?style=flat-square)](#-sources--credits)
 [![No%20API](https://img.shields.io/badge/No%20API-key%20needed-success?style=flat-square)](#-why-crux)
 
@@ -16,7 +16,7 @@
 
 ---
 
-> Two skills, one goal: make any repo look professional in minutes. **readme-author** uses the Hook → Prove → Enable → Extend framework with scoring and validation. **logo-author** generates 6+ SVG variants, exports PNG in 7 sizes, and builds interactive HTML showcases with 12 background styles.
+> Three skills, one goal: make any repo look professional in minutes. **readme-author** uses the Hook → Prove → Enable → Extend framework with scoring and validation. **logo-author** generates 6+ SVG variants, exports PNG in 7 sizes, and builds interactive HTML showcases with 12 background styles. **readme-full** chains both in a single pipeline — detect → logo → README → validate.
 
 ## ✨ Features
 
@@ -39,6 +39,13 @@
 - Interactive HTML showcase with React template
 - Optional AI showcase via Gemini/Nano Banana (12 professional backgrounds)
 - Iterative refinement workflow with favicon size verification
+
+**readme-full**
+- All-in-one pipeline: detect → logo → README → validate
+- Chains logo-author + readme-author in a single workflow
+- 5-phase: Detect → Logo → Refine → Generate README → Score
+- Same scoring system (Essential → Viral, 100 points)
+- All scripts, references, templates, and assets included
 
 ## 🚀 Quick Start
 
@@ -132,6 +139,7 @@ python skills/logo-author/scripts/generate_showcase.py "MyApp" logo_512.png --al
 |-------|-------------|-------------|
 | `readme-author` | Generate README.md with Hook → Prove → Enable → Extend | 4 operations + scoring system |
 | `logo-author` | Generate SVG logos, export PNG, build showcase | 6+ variants + 12 backgrounds + 8 design principles |
+| `readme-full` | All-in-one: detect → logo → README → validate | Single pipeline, self-contained |
 
 ## 🏗️ Architecture
 
@@ -152,6 +160,13 @@ crux/
 │   │   └── templates/
 │   │       ├── badges.md           # Badge construction patterns
 │   │       └── hero_layout.md      # 4 hero section layouts
+│   │
+│   ├── readme-full/
+│   │   ├── SKILL.md                # All-in-one pipeline (detect → logo → README → validate)
+│   │   ├── scripts/                # All 6 scripts (logo + readme combined)
+│   │   ├── references/             # All 6 references (design patterns + validation)
+│   │   ├── templates/              # Badge + hero templates
+│   │   └── assets/                 # React showcase template
 │   │
 │   └── logo-author/
 │       ├── SKILL.md                # 5-phase workflow + 8 design principles
