@@ -205,15 +205,3 @@ PRs welcome. Areas to contribute:
 ## 📄 License
 
 [MIT](LICENSE) — free for personal and commercial use.
-
----
-
-## 🔗 Sources & Credits
-
-Crux merges the best of three open-source skill repositories:
-
-| Source | What We Merged | Repository |
-|--------|----------------|------------|
-| **tsilva/claudeskillz** | README framework (Hook→Prove→Enable→Extend), 4 operations (create/modify/validate/optimize), scoring system, project-type templates, badge patterns, validation guide | [github.com/tsilva/claudeskillz](https://github.com/tsilva/claudeskillz) |
-| **op7418/logo-generator-skill** | 6+ variant generation workflow, 12 background styles, design pattern library (dot matrix, geometric, lines, nodes), WebGL backgrounds, AI showcase via Gemini, React showcase template | [github.com/op7418/logo-generator-skill](https://github.com/op7418/logo-generator-skill) |
-| **neonwatty/logo-designer-skill** | Iterative interview workflow, multi-tool PNG export (export.sh), favicon size verification, refinement loop | [github.com/neonwatty/logo-designer-skill](https://github.com/neonwatty/logo-designer-skill) |
